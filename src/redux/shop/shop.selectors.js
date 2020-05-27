@@ -7,9 +7,11 @@ export const selectCollections = createSelector(
   (shop) => shop.collections
 );
 
-/* used to match collection id number with COLLETION_ID_MAP key. 
- * This determines route in shop component
-*/
+export const selectCollectionsForPreview = createSelector(
+  [selectCollections],
+  collections => Object.keys(collections).map(key => collections[key])
+);
+
 export const selectCollection = collectionUrlParam => 
   createSelector(
     [selectCollections],
